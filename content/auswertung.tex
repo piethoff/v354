@@ -1,2 +1,101 @@
 \section{Auswertung}
 \label{sec:Auswertung}
+\subsection{Die gedämpfte Schwingung}
+Die Messung wird wie in der Duchtführung beschrieben durchgeführt.
+Die so erhaltenen Messwerte befinden sich in Tabelle\ref{tab:Messwerte1} :
+\begin{table}[H]
+    \centering
+    \caption{Spannungsamplituden mit der entsprechenden Zeit.}
+    \label{tab:Messwerte1}
+    \begin{tabular}{S[table-format=1.1] S[table-format=2.2] }
+        \toprule
+        {$t/\si{\milli\second}$} & {$U_C/\si{\volt}$} \\
+        \midrule
+        0.000 & 13.4 \\
+        0.037 & 11.4 \\
+        0.076 & 9.4  \\
+        0.114 & 8.2  \\
+        0.152 & 7.0  \\
+        0.189 & 6.0  \\
+        0.228 & 5.2  \\
+        0.266 & 4.4  \\
+        0.304 & 3.6  \\
+        0.342 & 3.0  \\
+        0.379 & 2.6  \\
+        0.418 & 2.2  \\
+        0.456 & 2.0  \\
+        0.494 & 1.8  \\
+        0.532 & 1.4  \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\noindent Die Messwerte werden in der halblogarithmischen Abbildung aufgetragen.
+Es wird eine lineare Ausgleichsrechnung der Form
+\begin{equation*}
+  f(x)=mx+b
+\end{equation*}
+, mit Python, durchgeführt und aufgetragen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{build/messung1.pdf}
+    \caption{Messwerte und Ausgleichsgerade.}
+    \label{fig:plot1}
+\end{figure}
+Es ergeben sich folgende Werte:
+\begin{equation*}
+  m=\SI{-4.18\pm0.05}{\per\milli\second}
+\end{equation*}
+\begin{equation*}
+  b=2.578\pm0.017
+\end{equation*}
+Die Steigung ist hier
+\begin{equation*}
+  m=-\frac{R}{2L}.
+\end{equation*}
+Dies folgt aus Gleichung\eqref{eq:steig} und damit lässt sich $R$ über
+\begin{equation*}
+  R=-2mL
+\end{equation*}
+bestimmen.
+Aus den Herstellerangaben findet sich für $L=\SI{16.78\pm0.09}{\milli\henry}$.
+Womit
+\begin{equation*}
+  R=\SI{140.28\pm1.84}{\ohm}
+\end{equation*}
+folgt.
+Die Ungenauigkeit errechnet sich hier mit der Gaußschen Fehlerfortpflanzung:
+\begin{equation*}
+  \Delta R= \sqrt{(\frac{\Delta m}{m})^2 + (\frac{\Delta L}{L})^2} R
+\end{equation*}
+Die Abklingdauer $T_\text{ex}$ ist der negative Kehrwert der Steigung $m$:
+\begin{equation*}
+  T_\text{ex}= -\frac{1}{m} = \SI{0.239\pm0.003}{\milli\second}
+\end{equation*}
+
+
+\subsection{Aperiodischer Grenzfall}
+Die Messung wird wie in der Durchführung beschrieben ausgeführt.
+Der so gemessene Wert für $R_\text{ap}$ beträgt:
+\begin{equation*}
+  R_\text{ap}=\SI{2.39}{\kilo\ohm}
+\end{equation*}
+Die Schwingung der Spannung verschwindet beim aperiodischen Grenzfall, daher lässt sich $R_ap$ über $L$ und $C$ bestimmen:
+\begin{equation*}
+  R=\sqrt{\frac{4L}{C}}
+\end{equation*}
+Aus den Herstellerangaben lassen sich die Werte
+\begin{equation*}
+  L=\SI{16.78\pm0.09}{\milli\henry}
+\end{equation*}
+und
+\begin{equation*}
+  C=\SI{2.066\pm0.006}{\nano\farad}
+\end{equation*}
+entnehmen.
+Damit lässt sich für $R_\text{ap}$ ein Theoriewert von
+\begin{equation*}
+  R_\text{ap}=\SI{5.69}{\kilo\ohm}
+\end{equation*}
+errechnen.
