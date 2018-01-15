@@ -23,7 +23,7 @@ plt.grid(True, which='both')
 
 # Fitvorschrift
 def f(x, A, B):
-    return A*x + B      #jeweilige Fitfunktion auswaehlen:
+    return np.exp(B)*np.exp(A*x)      #jeweilige Fitfunktion auswaehlen:
 
 params, covar = curve_fit(f, x, y)            #eigene Messwerte hier uebergeben
 uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
