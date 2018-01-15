@@ -54,18 +54,18 @@ data[2] *= 2*np.pi
 def freq(w, L, C, R):
     return 1 / np.sqrt((1-L*C*w**2)**2 + (w*R*C)**2)
 
-params, covar = curve_fit(freq, data[2], data[0], p0=(0.016, 0.000000002, 682))
+params, covar = curve_fit(freq, data[2], data[0], p0=(0.016, 2*10**(-9), 682))
 uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
+print("Freq: ")
+print(uparams)
 
-#print(uparams)
-
+lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
+plt.plot(lin, freq(lin, *params), label="Regression")
 plt.plot(data[2], data[0], "x", label="Messwerte")
-plt.plot(27722.925, 4.147, ".", label=r"$U_\text{max}$")
 plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\second}$")
 plt.ylabel(r"$\frac{U_C}{U_0}$")
-lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
-#plt.plot(freq(lin, *params), label="Regression")
-plt.plot(lin, freq(lin, 0.016, 2*10**(-9), 682), label="Theoriekurve")
+#plt.plot(lin, freq(lin, 0.016, 2*10**(-9), 682), label="Theoriekurve")
+plt.plot(27722.925*2*np.pi, 4.147, ".", label=r"$U_\text{max}$")
 plt.xscale("log")
 plt.grid(which="both")
 plt.legend()
@@ -78,10 +78,16 @@ data = np.genfromtxt("content/freq2.txt", unpack=True)
 data[0] /= data[1]
 data[2] *= 2*np.pi
 
-#lin = np.linspace(data[2][0], data[2][0], 10)
+#params, covar = curve_fit(freq, data[2], data[0], p0=(0.016, 2*10**(-9), 682))
+#uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
+#print("Freq2: ")
+#print(uparams)
+
+lin = np.linspace(data[2][0], data[2][-1], 1000)
+plt.plot(lin, freq(lin, *params), label="Regression")
 plt.plot([data[2][0], data[2][-1]], [2.933, 2.933])
 plt.plot(data[2], data[0], "x", label="Messwerte")
-plt.plot(27722.925, 4.147, ".", label=r"$U_\text{max}$")
+plt.plot(27722.925*2*np.pi, 4.147, ".", label=r"$U_\text{max}$")
 plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\second}$")
 plt.ylabel(r"$\frac{U_C}{U_0}$")
 
@@ -97,23 +103,55 @@ data = np.genfromtxt("content/phase.txt", unpack=True)
 phi = np.array([2*np.pi*data[0] / data[1]])
 data = np.concatenate((data, phi))
 print(data[3])
+data[2] *= 1000*2*np.pi
 
 def phase(w, L, C, R):
-    return np.arctan((-w*R*C)/(1-L*C*w**2))
+    return -np.arctan2((-w*R*C), (1-L*C*w**2))
 
-params, covar = curve_fit(phase, data[2]*2*np.pi, data[3], p0=(0.016, 0.000000002, 682))
+params, covar = curve_fit(phase, data[2], data[3], p0=(0.016, 2*10**(-9), 900))
 uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
-
+print("Phase: ")
 print(uparams)
 
 lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
-#plt.plot(lin, phase(lin*2*np.pi, *params), label="Regression")
-plt.plot(lin, phase(lin*2*np.pi, 0.016, 2*10*(-9), 682), label="Theoriekurve")
-plt.plot(data[2], data[3], ".", label="Messdaten")
-plt.xlabel(r"$f/\si{\hertz}$")
+plt.plot(lin, phase(lin, *params), label="Regression")
+#plt.plot(lin, phase(lin, 0.016, 2*10**(-9), 682), label="Theoriekurve")
+
+plt.plot(data[2], data[3], "x", label="Messdaten")
+plt.xlabel(r"$w/\si{\second}$")
 plt.ylabel(r"$\phi$")
 plt.xscale("log")
 plt.grid(which="both")
 plt.legend()
 plt.tight_layout()
 plt.savefig("build/phase.pdf")
+plt.clf()
+
+
+data = np.genfromtxt("content/phase2.txt", unpack=True)
+
+phi = np.array([2*np.pi*data[0] / data[1]])
+data = np.concatenate((data, phi))
+print(data[3])
+data[2] *= 1000*2*np.pi
+
+#params, covar = curve_fit(phase, data[2], data[3], p0=(0.016, 2*10**(-9), 900))
+#uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
+#print("Phase2: ")
+#print(uparams)
+
+lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
+plt.plot(lin, phase(lin, *params), label="Regression")
+#plt.plot(lin, phase(lin, 0.016, 2*10**(-9), 682), label="Theoriekurve")
+plt.plot([data[2][0], data[2][-1]], [np.pi/2, np.pi/2])
+plt.plot([data[2][0], data[2][-1]], [np.pi/4, np.pi/4])
+plt.plot([data[2][0], data[2][-1]], [np.pi*3/4, np.pi*3/4])
+
+plt.plot(data[2], data[3], "x", label="Messdaten")
+plt.xlabel(r"$w/\si{\second}$")
+plt.ylabel(r"$\phi$")
+plt.grid(which="both")
+plt.legend(loc="upper left")
+plt.tight_layout()
+plt.savefig("build/phase2.pdf")
+plt.clf()
