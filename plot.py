@@ -78,8 +78,8 @@ data = np.genfromtxt("content/freq2.txt", unpack=True)
 data[0] /= data[1]
 data[2] *= 2*np.pi
 
-lin = np.linspace(data[2][0], data[2][0], 10)
-plt.plot(lin, 2.933)
+#lin = np.linspace(data[2][0], data[2][0], 10)
+plt.plot([data[2][0], data[2][-1]], [2.933, 2.933])
 plt.plot(data[2], data[0], "x", label="Messwerte")
 plt.plot(27722.925, 4.147, ".", label=r"$U_\text{max}$")
 plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\second}$")
