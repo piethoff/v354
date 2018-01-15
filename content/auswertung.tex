@@ -132,8 +132,40 @@ welche in Tabelle \ref{tab:freqtab} aufgetragen sind.
                 \bottomrule
         \end{tabular}
 \end{table}
+\noindent
+Diese sind in Abbildung \ref{fig:freq} aufgetragen zusammen mit einer Theoriekurve und dem theoretischen 
+Wert für $U_\text{max}$.
+\begin{figure}[H]
+    \centering
+    \caption{Messwerte und Theoriekurve zur Frequenzabhängigkeit.}
+    \label{fig:freq}
+    \includegraphics[width=\textwidth]{build/freq.pdf}
+\end{figure}
+\noindent
+Zusätzlich wird nochmal gesondert der Bereich um $U_\text{max}$ betrachtet, um $\omega_+$ und $\omega_-$ 
+zu bestimmen. Dafür wurde eine Gerade mit dem Wert von $\frac{U_\text{max}}{\sqrt{2}U_0$ eingefügt.
+\begin{figure}[H]
+    \centering
+    \caption{Ausschnitt aus des Messwerten zur Frequenzabhängigkeit.}
+    \label{fig:freq2}
+    \includegraphics[width=\textwidth]{build/freq2.pdf}
+\end{figure}
+\noindent
+Für $\omega_\pm$ ergeben sich folgende Werte:
+\begin{align}
+    \omega_- &=     \\
+    \omega_+ &=     
+\end{align}
 %
 \subsection{Frequenzabhängigkeit des Phasenwinkels}
+Im folgenden wird die Änderung des Phasenwinkels in Abhängigkeit zur Frequenz untersucht.
+Der Phasenwinkel kann mithilfe folgender Formel bestimmt werden, wobei $a$ die zeitliche Verschiebung 
+der Signale und $b$ die Periodendauer sind:
+\begin{equation}
+    \phi = 2\pi \frac{a}{b}
+\end{equation}
+Die erhaltenen Messwerte sind in Tabelle \ref{tab:phase} zusammen mit dem berechneten Phasenwinkel 
+aufgetragen.
 \begin{table}[H]
         \caption{Messdaten des Phasenwinkels.}
         \label{tab:phasetab}
@@ -158,4 +190,13 @@ welche in Tabelle \ref{tab:freqtab} aufgetragen sind.
                 \bottomrule
         \end{tabular}
 \end{table}
+\noindent
+Die Messwerte sind außerdem in Abbildung \ref{fig:freq} zusammen mit einer Theoriekurve aufgetragen.
+\begin{figure}[H]
+    \centering
+    \caption{.}
+    \label{fig:freq}
+    \includegraphics[width=\textwidth]{build/phase.pdf}
+\end{figure}
+\noindent
 %

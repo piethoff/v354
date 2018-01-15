@@ -57,13 +57,15 @@ def freq(w, L, C, R):
 params, covar = curve_fit(freq, data[2], data[0], p0=(0.016, 0.000000002, 682))
 uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
 
-print(uparams)
+#print(uparams)
 
-plt.plot(data[2], data[0], ".", label="Messwerte")
+plt.plot(data[2], data[0], "x", label="Messwerte")
+plt.plot(27722.925, 4.147, ".", label=r"$U_\text{max}$")
 plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\second}$")
 plt.ylabel(r"$\frac{U_C}{U_0}$")
 lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
-plt.plot(freq(lin, *params), label="Regression")
+#plt.plot(freq(lin, *params), label="Regression")
+plt.plot(lin, freq(lin, 0.016, 2*10**(-9), 682), label="Theoriekurve")
 plt.xscale("log")
 plt.grid(which="both")
 plt.legend()
@@ -71,6 +73,24 @@ plt.tight_layout()
 plt.savefig("build/freq.pdf")
 
 plt.clf()
+
+data = np.genfromtxt("content/freq2.txt", unpack=True)
+data[0] /= data[1]
+data[2] *= 2*np.pi
+
+lin = np.linspace(data[2][0], data[2][0], 10)
+plt.plot(lin, 2.933)
+plt.plot(data[2], data[0], "x", label="Messwerte")
+plt.plot(27722.925, 4.147, ".", label=r"$U_\text{max}$")
+plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\second}$")
+plt.ylabel(r"$\frac{U_C}{U_0}$")
+
+plt.grid(which="both")
+plt.legend()
+plt.tight_layout()
+plt.savefig("build/freq2.pdf")
+plt.clf()
+
 
 data = np.genfromtxt("content/phase.txt", unpack=True)
 
@@ -86,8 +106,9 @@ uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
 
 print(uparams)
 
-#lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
+lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
 #plt.plot(lin, phase(lin*2*np.pi, *params), label="Regression")
+plt.plot(lin, phase(lin*2*np.pi, 0.016, 2*10*(-9), 682), label="Theoriekurve")
 plt.plot(data[2], data[3], ".", label="Messdaten")
 plt.xlabel(r"$f/\si{\hertz}$")
 plt.ylabel(r"$\phi$")

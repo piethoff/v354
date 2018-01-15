@@ -1,4 +1,4 @@
-##Messdaten zur Frequanzabhängigkeit
+##Messdaten zur Frequenzabhängigkeit
 #U_C/V  U/V     f/Hz
 6.93    7.84    10.01
 7.76    7.84    20.05
