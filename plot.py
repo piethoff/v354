@@ -13,6 +13,7 @@ mpl.rcParams.update({
 
 t, y = np.genfromtxt('content/Messwerte1.txt', unpack=True)
 
+y=np.exp(y)
 x= t/26320
 
 plt.xlabel(r'$t/\si{\second}$')
