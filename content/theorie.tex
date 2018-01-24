@@ -3,8 +3,9 @@ Ziel dieses Versuchs ist es den RLC-Schwingkreis zu untersuchen.
 \section{Theorie}
 \label{sec:Theorie}
 \subsection{Die gedämpfte Schwingung des RLC-Schwingkreises}
-Der in Abbildung \ref{fig:rlc} gezeigte Schaltkreis besteht aus einer Spule, einen Kondensator und einem ohmschen Wiederstand.
-Der Kondensator und die Spule sind speicherfähig Bauteile.
+Der in Abbildung \ref{fig:rlc} gezeigte Schaltkreis besteht aus einer Spule, einem Kondensator und einem ohmschen Wiederstand.
+Der Kondensator und die Spule sind speicherfähige Bauteile.
+Dies bedeutet, dass beide Bauteile als Energiespeicher fungieren.
 \begin{figure}[H]
     \centering
     \caption{RLC-Schwingkreis.\cite{v354}}
@@ -12,8 +13,8 @@ Der Kondensator und die Spule sind speicherfähig Bauteile.
     \includegraphics[width=\textwidth-20em]{content/RLCKreis.png}
 \end{figure}
 \noindent
-Wird dem System elektrische Energie zugeführt, so kann diese zwischen den beiden Bauteilen oszylieren.
-Der Wiederstand wandelt die elektrische Energie in wärme um.
+Wird dem System elektrische Energie zugeführt, so kann diese zwischen den beiden Bauteilen oszillieren.
+Der Widerstand wandelt die elektrische Energie in Wärme um.
 Die Amplitude der Schwingung nimmt ab, sie ist gedämpft.
 Mit der zweiten Kirchhoffschen Regel lässt sich die Gleichung für das vorliegende System aufstellen.
 Es folgt:
@@ -132,7 +133,7 @@ Analog zur Gleichung\eqref{eq:gl2} folgt:
   LC\frac{d^2 U_c}{dt^2} +RC \frac{d U_c}{dt}+U_c = U_0 e^{i\omega t}
 \end{equation}
 Es soll nun betrachtet werden wie die Amplitude $U_c$ der Kondesatorspannung und ihr Phasenunterschied zu der Erregerspannung von der Frequenz abhängt.
-Mit einem Ansatz ähnlich dem zu Gleichung\eqref{eq:gl2} ergeben sich nach einigen Umformungen die Gleichungen
+Mit einem Ansatz ähnlich dem zu Gleichung \eqref{eq:gl2} ergeben sich nach einigen Umformungen die Gleichungen
 \begin{equation}
   \varphi(\omega)=\arctan\left(\frac{-\omega RC}{1-LC\omega^2}\right)
 \end{equation}
@@ -151,12 +152,12 @@ Für den Fall der schwachen Dämpfung,
 \begin{equation}
   \frac{R^2}{2L^2}<<\frac{1}{LC} ,
 \end{equation}
-übertrifft $U_C$ die Erregerspannung um den Faktor 
+übertrifft $U_C$ die Erregerspannung um den Faktor
 \begin{equation}
     U_{C,\text{max}} = U_0 \, \frac{1}{\omega_0 R C}.
     \label{eqn:umax}
 \end{equation}
-Diesen Faktor wird auch "Resonanzüberhöhung" oder "Güte" des Schwingkreises genannt.
+Dieser Faktor wird auch "Resonanzüberhöhung" oder "Güte" des Schwingkreises genannt.
 Um die Schärfe der Resonanz anzugeben werden die Frequenzen $\omega_+$ und $\omega_-$ bestimmt für die $U_C$ auf einen Bruchteil $\frac{1}{\sqrt{2}}$ seines Maximalwerts abgesunken ist.
 Eingesetzt in Gleichung\eqref{eq:gl7} folgt für die Breite der Resonanzkurve:
 \begin{equation}
