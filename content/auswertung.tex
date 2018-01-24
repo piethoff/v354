@@ -34,9 +34,9 @@ Die so erhaltenen Messwerte befinden sich in Tabelle \ref{tab:Messwerte1} :
 \noindent Die Messwerte werden in der halblogarithmischen Abbildung aufgetragen.
 Es wird eine lineare Ausgleichsrechnung der Form
 \begin{equation*}
-  f(x)=mx+b
+  f(x)=mx+b,
 \end{equation*}
-, mit Python, durchgeführt und aufgetragen.
+mit Python, durchgeführt und aufgetragen.
 
 \begin{figure}
     \centering
@@ -68,7 +68,7 @@ Womit
 folgt.
 Die Ungenauigkeit errechnet sich hier mit der Gaußschen Fehlerfortpflanzung:
 \begin{equation*}
-  \Delta R= \sqrt{(\frac{\Delta m}{m})^2 + (\frac{\Delta L}{L})^2} R
+  \symup{\Delta} R= R\sqrt{\left(\frac{\Delta m}{m}\right)^2 + \left(\frac{\Delta L}{L}\right)^2}
 \end{equation*}
 Die Abklingdauer $T_\text{ex}$ ist der negative Kehrwert der Steigung $m$:
 \begin{equation*}
@@ -109,29 +109,29 @@ welche in Tabelle \ref{tab:freqtab} aufgetragen sind.
         \caption{Messdaten zur Frequenzabhängigkeit.}
         \label{tab:freqtab}
         \centering
-        \begin{tabular}{S[table-format=2.2(0)e0] S[table-format=1.2(0)e0] S[table-format=6.2(0)e0] }
+        \begin{tabular}{S[table-format=6.2] S[table-format=2.2] S[table-format=1.2] }
                 \toprule
-                {$U_C/\si{\volt}$} & {$U/\si{\volt}$} & {$f/\si{\hertz}$} \\
+                {$f\si{\hertz}$} & {$U_C/\si{\volt}$} & {$U/\si{\volt}$} \\
                 \midrule
-                6.93    & 7.84  & 10.01          \\
-                7.76    & 7.84  & 20.05          \\
-                7.76    & 7.76  & 50.05          \\
-                7.76    & 7.76  & 100.00         \\
-                7.68    & 7.76  & 200.00         \\
-                7.76    & 7.94  & 500.00         \\
-                7.76    & 7.76  & 1000.00        \\
-                7.76    & 7.76  & 2000.00        \\
-                8.00    & 7.84  & 5000.00        \\
-                8.87    & 7.76  & 10000.00       \\
-                13.07   & 7.76  & 17500.00       \\
-                14.65   & 7.76  & 19000.00       \\
-                16.24   & 7.68  & 20000.00       \\
-                22.97   & 7.52  & 23000.00       \\
-                28.91   & 7.29  & 26000.00       \\
-                17.92   & 7.52  & 30000.00       \\
-                11.48   & 7.68  & 33000.00       \\
-                2.81    & 7.76  & 50000.00       \\
-                0.47    & 7.68  & 100000.00      \\
+                10.01     & 6.93    & 7.84         \\
+                20.05     & 7.76    & 7.84         \\
+                50.05     & 7.76    & 7.76         \\
+                100.00    & 7.76    & 7.76         \\
+                200.00    & 7.68    & 7.76         \\
+                300.00    & 7.76    & 7.94         \\
+                1000.00   & 7.76    & 7.76         \\
+                2000.00   & 7.76    & 7.76         \\
+                5000.00   & 8.00    & 7.84         \\
+                10000.00  & 8.87    & 7.76         \\
+                17500.00  & 13.07   & 7.76         \\
+                19000.00  & 14.65   & 7.76         \\
+                20000.00  & 16.24   & 7.68         \\
+                23000.00  & 22.97   & 7.52         \\
+                26000.00  & 28.91   & 7.29         \\
+                30000.00  & 17.92   & 7.52         \\
+                33000.00  & 11.48   & 7.68         \\
+                50000.00  & 2.81    & 7.76         \\
+                100000.00 & 0.47    & 7.68         \\
                 \bottomrule
         \end{tabular}
 \end{table}
@@ -145,7 +145,7 @@ Wert für $U_\text{max}$ nach Gleichung \eqref{eqn:umax}.
     \includegraphics[width=\textwidth]{build/freq.pdf}
 \end{figure}
 \noindent
-Zusätzlich wird nochmal gesondert der Bereich um $U_\text{max}$ betrachtet, um $\omega_+$ und $\omega_-$
+Zusätzlich wird nochmal gesondert der Bereich um $U_\text{max}$ betrachtet, um $f_+$ und $f_-$
 zu bestimmen. Dafür wurde eine Gerade mit dem Wert von $\frac{U_\text{max}}{\sqrt{2}U_0}$ eingefügt.
 \begin{figure}[H]
     \centering
@@ -154,22 +154,22 @@ zu bestimmen. Dafür wurde eine Gerade mit dem Wert von $\frac{U_\text{max}}{\sq
     \includegraphics[width=\textwidth]{build/freq2.pdf}
 \end{figure}
 \noindent
-Für $\omega_\pm$ ergeben sich folgende Werte:
+Für $f_\pm$ ergeben sich folgende Werte:
 \begin{align}
-    \omega_- &= \SI{144800}{\per\second}    \\
-    \omega_+ &= \SI{182250}{\per\second}
+    f_- &= \SI{23050}{\hertz}    \\
+    f_+ &= \SI{29000}{\hertz}
 \end{align}
 Somit erhält man als Breite:
 \begin{equation}
-    \omega_--\omega_+ = \SI{37450}{\per\second}
+    f_--f_+ = \SI{5950}{\hertz}
 \end{equation}
-Mit $\omega_0 = \SI{162800}{\per\second}$ ergibt sich eine Güte von:
+Mit $f_0 = \SI{25900}{\hertz}$ ergibt sich eine Güte von:
 \begin{equation}
     q = 4.35
 \end{equation}
 Im Vergleich dazu steht der Wert aus der theoretischen Überlegung nach Gleichung \eqref{eqn:breite}:
 \begin{equation}
-    \omega_{-,t}-\omega_{+,t} = \SI{42625}{\per\second}
+    f_{-,t}-f_{+,t} = \SI{6784}{\hertz}
 \end{equation}
 Es ergibt sich ein Theoriewert von:
 \begin{equation}
@@ -189,23 +189,23 @@ aufgetragen.
         \caption{Messdaten des Phasenwinkels.}
         \label{tab:phase}
         \centering
-        \begin{tabular}{S[table-format=2.1(0)e0] S[table-format=4.2(0)e0] S[table-format=3.2(0)e0] S[table-format=1.2]}
+        \begin{tabular}{S[table-format=3.2] S[table-format=2.1(0)e0] S[table-format=4.2(0)e0] S[table-format=1.2]}
                 \toprule
-                {$a/\si{\milli\second}$} & {$b/\si{\milli\second}$} & {$f/\si{\kilo\hertz}$} & {$\phi$} \\
+                {f/\si{\kilo\hertz}$} & {$a/\si{\milli\second}$} & {$b/\si{\milli\second}$} &  {$\phi$} \\
                 \midrule
-                0.0     & 1000.00   & 1.00  & 0.00\\
-                0.0     & 500.00    & 2.00  & 0.00\\
-                1.6     & 200.08    & 5.00  & 0.05\\
-                2.0     & 100.10    & 10.00 & 0.13\\
-                2.4     & 66.61     & 15.00 & 0.23\\
-                2.8     & 57.28     & 17.50 & 0.31\\
-                3.2     & 49.97     & 20.00 & 0.40\\
-                5.0     & 43.62     & 23.00 & 0.72\\
-                9.4     & 38.24     & 26.13 & 1.54\\
-                12.6    & 33.44     & 30.00 & 2.36\\
-                12.6    & 28.90     & 33.08 & 2.74\\
-                9.4     & 20.01     & 50.00 & 2.95\\
-                5.0     & 9.98      & 100.00& 3.15\\
+                1.00   & 0.0     & 1000.00   & 0.00\\
+                2.00   & 0.0     & 500.00    & 0.00\\
+                5.00   & 1.6     & 200.08    & 0.05\\
+                10.00  & 2.0     & 100.10    & 0.13\\
+                15.00  & 2.4     & 66.61     & 0.23\\
+                17.50  & 2.8     & 57.28     & 0.31\\
+                20.00  & 3.2     & 49.97     & 0.40\\
+                23.00  & 5.0     & 43.62     & 0.72\\
+                26.13  & 9.4     & 38.24     & 1.54\\
+                30.00  & 12.6    & 33.44     & 2.36\\
+                33.08  & 12.6    & 28.90     & 2.74\\
+                50.00  & 9.4     & 20.01     & 2.95\\
+                100.00 & 5.0     & 9.98      & 3.15\\
                 \bottomrule
         \end{tabular}
 \end{table}
@@ -228,13 +228,13 @@ Der annähernd lineare Bereich um $\phi=\pi/2$ wird genauer betrachtet.
 \noindent
 Aus dem Diagramm erhält man folgende Werte für $\phi=\pi/2, \pi/4, 3\pi/4$:
 \begin{align}
-    \omega_0 &= \SI{165125}{\per\second} \\ 
-    \omega_1 &= \SI{146500}{\per\second} \\ 
-    \omega_2 &= \SI{185800}{\per\second}
+    f_0 &= \SI{26280}{\hertz} \\ 
+    f_1 &= \SI{23320}{\hertz} \\ 
+    f_2 &= \SI{29570}{\hertz}
 \end{align}
 Es folgt für die Breite:
 \begin{equation}
-    \omega_1-\omega_2 = \SI{39300}{\per\second}
+    f_1-f_2 = \SI{6255}{\hertz}
 \end{equation}
 Es folgt daraus eine Güte von:
 \begin{equation}
@@ -242,6 +242,6 @@ Es folgt daraus eine Güte von:
 \end{equation}
 Im Vergleich dazu steht der Theoriewert nach Gleichung \eqref{eqn:breite}:
 \begin{equation}
-    \omega_{1,t}-\omega_{2,t} = \SI{42625}{\per\second}
+    f_{1,t}-f_{2,t} = \SI{6784}{\hertz}
 \end{equation}
 %
