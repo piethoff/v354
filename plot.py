@@ -54,7 +54,7 @@ data[0] /= data[1]
 #def freq(w, L, C, R):
 #    return 1 / np.sqrt((1-L*C*w**2)**2 + (w*R*C)**2)
 def freq(f, L, C, R):
-    return 1 / np.sqrt((1-L*C*(f2*np.pi)**2)**2 + ((f*2*np.pi)*R*C)**2)
+    return 1 / np.sqrt((1-L*C*(f*2*np.pi)**2)**2 + ((f*2*np.pi)*R*C)**2)
 
 params, covar = curve_fit(freq, data[2], data[0], p0=(0.016, 2*10**(-9), 682))
 uparams = unumpy.uarray(params, np.sqrt(np.diag(covar)))
@@ -65,7 +65,7 @@ lin = np.linspace(np.amin(data[2]), np.amax(data[2]), 1000)
 plt.plot(lin, freq(lin, *params), label="Regression")
 plt.plot(data[2], data[0], "x", label="Messwerte")
 #plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\per\second}$")
-plt.xlabel(r"$\f /\si[per-mode=reciprocal]{\hertz}$")
+plt.xlabel(r"$f /\si[per-mode=reciprocal]{\hertz}$")
 plt.ylabel(r"$\frac{U_C}{U_0}$")
 #plt.plot(lin, freq(lin, 0.016, 2*10**(-9), 682), label="Theoriekurve")
 #plt.plot(27722.925*2*np.pi, 4.147, ".", label=r"$U_\text{max}$")
@@ -94,7 +94,7 @@ plt.plot(data[2], data[0], "x", label="Messwerte")
 #plt.plot(27722.925*2*np.pi, 4.147, ".", label=r"$U_\text{max}$")
 plt.plot(27722.925, 4.147, ".", label=r"$U_\text{max}$")
 #plt.xlabel(r"$\omega /\si[per-mode=reciprocal]{\per\second}$")
-plt.xlabel(r"$\f /\si[per-mode=reciprocal]{\hertz}$")
+plt.xlabel(r"$f /\si[per-mode=reciprocal]{\hertz}$")
 plt.ylabel(r"$\frac{U_C}{U_0}$")
 
 plt.grid(which="both")
